@@ -34,15 +34,15 @@ class CursorSetTests {
             PTE(
                 "(5_) ___ __ __",
                 "(5__) ___ __ __",
-                "(53_) ___ __ __",
+                "(59_) ___ __ __",
                 3,
                 actionType = ActionType.Deleting(1),
                 2
             ),
             PTE(
-                "(53) ___ __ __",
-                "(53_) ___ __ __",
-                "(534) ___ __ __",
+                "(59) ___ __ __",
+                "(59_) ___ __ __",
+                "(594) ___ __ __",
                 4,
                 actionType = ActionType.Deleting(1),
                 3
@@ -54,11 +54,11 @@ class CursorSetTests {
     @Test
     fun setCursorOnAddingTest() {
         val testCases = listOf(
-            PTE("(53__) ___ __ __", "(53_) ___ __ __", expectingCursorPoint = 3),
-            PTE("(534_) ___ __ __", "(534) ___ __ __", expectingCursorPoint = 4),
-            PTE("(534) 5___ __ __", "(534) 5__ __ __", expectingCursorPoint = 7),
-            PTE("(534) 59__ __ __", "(534) 59_ __ __", expectingCursorPoint = 8),
-            PTE("(534) 594_ __ __", "(534) 594 __ __", expectingCursorPoint = 9),
+            PTE("(59__) ___ __ __", "(59_) ___ __ __", expectingCursorPoint = 3),
+            PTE("(594_) ___ __ __", "(594) ___ __ __", expectingCursorPoint = 4),
+            PTE("(594) 5___ __ __", "(594) 5__ __ __", expectingCursorPoint = 7),
+            PTE("(594) 59__ __ __", "(594) 59_ __ __", expectingCursorPoint = 8),
+            PTE("(594) 594_ __ __", "(594) 594 __ __", expectingCursorPoint = 9),
         )
         runTest(testCases)
     }
