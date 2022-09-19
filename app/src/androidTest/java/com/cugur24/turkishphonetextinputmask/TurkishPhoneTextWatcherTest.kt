@@ -3,6 +3,7 @@ package com.cugur24.turkishphonetextinputmask
 import android.util.Log
 import android.view.View
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -47,10 +48,14 @@ class TypeTextToSelectionTests {
 
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
-
+    private lateinit var view:ViewInteraction
+    @Before
+    fun setUp(){
+        view = onView(withId(R.id.et_testPhoneNumber))
+    }
     @Test
     fun addingToBoundIndexTest() {
-        onView(withId(R.id.et_prefixPhoneNumber)).let {
+        view.let {
             it.perform(typeText("43422"))
             it.perform(typeToSelection("55", 9)).check(matches(withText("4342255")))
         }
@@ -58,7 +63,7 @@ class TypeTextToSelectionTests {
 
     @Test
     fun addingToMiddleIndexTest() {
-        onView(withId(R.id.et_prefixPhoneNumber)).let {
+        view.let {
             it.perform(typeText("43422"))
             it.perform(typeToSelection("99", 2)).check(matches(withText("4399422")))
         }
@@ -66,7 +71,7 @@ class TypeTextToSelectionTests {
 
     @Test
     fun addingToStartIndex() {
-        onView(withId(R.id.et_prefixPhoneNumber)).let {
+        view.let {
             it.perform(typeText("43422"))
             it.perform(typeToSelection("33", 0)).check(matches(withText("3343422")))
         }
@@ -74,7 +79,7 @@ class TypeTextToSelectionTests {
 
     @Test(expected = IndexOutOfBoundsException::class)
     fun addingToNegativeIndex() {
-        onView(withId(R.id.et_prefixPhoneNumber)).let {
+        view.let {
             it.perform(typeText("43422"))
             it.perform(typeToSelection("33", -1))
         }
@@ -82,7 +87,7 @@ class TypeTextToSelectionTests {
 
     @Test
     fun deletingTest() {
-        onView(withId(R.id.et_prefixPhoneNumber)).let {
+        view.let {
             it.perform(replaceText("123456789"))
             it.perform(typeToSelection("", 4, ActionType.Deleting(3)))
                 .check(matches(withText("156789")))
