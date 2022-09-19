@@ -19,6 +19,15 @@ class TypeTextToSelection(
     private val selection: Int,
     private val actionType: ActionType
 ) : ViewAction {
+    companion object{
+        fun typeToSelection(
+            stringToBeTyped: String,
+            selection: Int,
+            actionType: ActionType = ActionType.Adding()
+        ): TypeTextToSelection {
+            return TypeTextToSelection(stringToBeTyped, selection, actionType)
+        }
+    }
     override fun getConstraints(): Matcher<View> {
         return AllOf.allOf(
             ViewMatchers.isDisplayed(),
@@ -55,3 +64,4 @@ class TypeTextToSelection(
 
     }
 }
+
