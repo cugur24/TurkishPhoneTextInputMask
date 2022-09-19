@@ -17,7 +17,7 @@ class TurkishPhoneTextWatcher : TextWatcher {
     val phoneNumber: String get() = cleanPhone(prevPhone)
     private var editTextRef: EditText? = null
     private var prefix: Char = '_'
-    private var phoneMask: String
+    private lateinit var phoneMask: String
     private val defaultMask = "(5__) ___ __ __"
     private val maxInputLength = 15
     private val maxDigitCount = 10
@@ -28,16 +28,15 @@ class TurkishPhoneTextWatcher : TextWatcher {
 
     constructor(editTextRef: EditText) {
         this.editTextRef = editTextRef
+        phoneMask = defaultMask
     }
 
     constructor(editTextRef: EditText, prefix: Char) {
         this.editTextRef = editTextRef
         this.prefix = prefix
-    }
-
-    init {
-        phoneMask = if (prefix == '_') defaultMask
-        else {
+        phoneMask = if (prefix == '_') {
+             defaultMask
+        } else {
             val newMask = StringBuilder(defaultMask)
             newMask.replace('_'.toString().toRegex(), prefix.toString())
         }
@@ -241,8 +240,11 @@ class TurkishPhoneTextWatcher : TextWatcher {
                         subSequence(action.cursorPosition - 1, length).let {
                             return it.contains("\\d+".toRegex())
                         }
-                    } else{
-                        if(prevPhone.isNotEmpty()) prevPhone.subSequence(action.cursorPosition,length).let{
+                    } else {
+                        if (prevPhone.isNotEmpty()) prevPhone.subSequence(
+                            action.cursorPosition,
+                            length
+                        ).let {
                             return it.contains("\\d+".toRegex())
                         }
                         subSequence(action.cursorPosition, length).let {
