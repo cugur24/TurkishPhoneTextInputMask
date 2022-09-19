@@ -18,8 +18,15 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+        }
+        debug {
+            debuggable true
+            jniDebuggable true
+            minifyEnabled false
         }
     }
     buildFeatures{
@@ -32,6 +39,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+afterEvaluate {
+    assembleRelease.dependsOn testReleaseUnitTest, connectedAndroidTest
 }
 
 dependencies {

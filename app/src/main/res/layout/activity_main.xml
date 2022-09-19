@@ -6,13 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_phone_mask"
+            style="@style/titleStyle"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:hint="@string/phone_number"
+            >
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_defaultPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:inputType="phone"
+                android:maxLength="16"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_mask_with_prefix"
+            style="@style/titleStyle"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:hint="@string/phone_number"
+            >
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_prefixPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:inputType="phone"
+                android:maxLength="16"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

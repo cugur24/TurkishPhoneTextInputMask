@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">TurkishPhoneTextInputMask</string>
+    <string name="app_name">TextInputMask</string>
+    <string name="default_phone_mask">Default Phone Mask</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="phone_mask_with_prefix">Phone Mask With Prefix</string>
 </resources>

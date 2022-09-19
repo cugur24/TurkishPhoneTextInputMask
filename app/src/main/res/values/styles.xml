@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="titleStyle">
+        <item name="android:fontFamily">@font/amaranth</item>
+        <item name="android:textSize">19.5sp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+</resources>

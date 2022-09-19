@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <!-- Palette -->
+
+    <color name="brown">#e29578</color>
+    <color name="brown_variant">#CF6748</color>
+    <color name="lilac">#ffddd2</color>
+    <color name="ice_blue">#edf6f9</color>
+    <color name="cool_green">#83c5be</color>
+    <color name="cool_green_variant">#53A399</color>
+    <color name="cool_dark_green">#006d77</color>
 </resources>
