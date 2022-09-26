@@ -6,13 +6,32 @@ This kotlin library can be useful to create mask for turkish phone numbers like
 **(598) 76_ __ __**
 
 ## Demo
-!!! Will add gif here !!!
+![Demo Mask](https://github.com/cugur24/TurkishPhoneTextInputMask/blob/master/doc/mask.gif?raw=true)
 
 
 ## Installation
 
-!!! Will add installation here !!!
+### **Step 1** Add the JitPack repository to your build file
 
+Add it in your root build.gradle at the end of repositories:
+
+```gradle
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+### **Step 2** Add the dependency 
+
+Add this following line to app level gradle file and sync project.
+
+```gradle
+dependencies {
+	implementation 'com.github.cugur24:TurkishPhoneTextInputMask:1.0-beta'
+}
+```
 ## Usage
 
 For the sample app you can run to root project in repository or you can follow instructions below.
