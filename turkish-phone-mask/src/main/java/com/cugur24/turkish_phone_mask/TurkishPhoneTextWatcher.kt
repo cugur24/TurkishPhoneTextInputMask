@@ -35,7 +35,7 @@ class TurkishPhoneTextWatcher : TextWatcher {
         this.editTextRef = editTextRef
         this.prefix = prefix
         phoneMask = if (prefix == '_') {
-             defaultMask
+            defaultMask
         } else {
             val newMask = StringBuilder(defaultMask)
             newMask.replace('_'.toString().toRegex(), prefix.toString())
@@ -203,11 +203,22 @@ class TurkishPhoneTextWatcher : TextWatcher {
                 } else {
                     val text = editTextRef?.text.toString()
                     text?.let {
-                        val indexOfLastDigit = text.indexOfLast { it.isDigit() }
-                        if (indexOfLastDigit + 1 != it.length)
-                            editTextRef?.setSelection(indexOfLastDigit + 1)
-                        else
-                            editTextRef?.setSelection(it.length)
+                        if (isThereAnyDigitFront(editTextRef)) {
+                            val selection = action.cursorPosition
+                            selection.let { cursor ->
+                                if (cursor + 1 == text.length) editTextRef?.setSelection(it.length)
+                                (text.subSequence(cursor+1, text.length)
+                                    .indexOfFirst { it.isDigit() } + 1).also {
+                                    editTextRef?.setSelection(cursor+1+it)
+                                }
+                            }
+                        } else {
+                            val indexOfLastDigit = text.indexOfLast { it.isDigit() }
+                            if (indexOfLastDigit + 1 != it.length)
+                                editTextRef?.setSelection(indexOfLastDigit + 1)
+                            else
+                                editTextRef?.setSelection(it.length)
+                        }
                     }
                 }
             }
@@ -242,7 +253,7 @@ class TurkishPhoneTextWatcher : TextWatcher {
                         }
                     } else {
                         if (prevPhone.isNotEmpty()) prevPhone.subSequence(
-                            action.cursorPosition,
+                            action.cursorPosition - 1,
                             length
                         ).let {
                             return it.contains("\\d+".toRegex())
