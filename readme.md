@@ -79,12 +79,26 @@ override fun onCreate(savedInstanceState: Bundle?) {
  turkishPhoneMask = TurkishPhoneTextWatcher(mainActivityBinding.etDefaultPhoneNumber,'*') 
  ...  
 ```  
+### Set library as listener for Edittext 
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {  
+ super.onCreate(savedInstanceState)
+ ...
+ mainActivityBinding.etDefaultPhoneNumber.addTextChangedListener(turkishPhoneMask)
+ ...
+```
 ### To get phone when needed
 
 You can get phone number from **phoneNumber** field. It return unmasked phone number from input. Ex: **5987654321**
 ```kotlin  
 turkishPhoneMask.phoneNumber  
 ```  
+
+### Todos
+
+- [ ] Clean up code
+- [ ] Writing set cursor instrumentation tests
+- [ ] Get mask from outside (Phase 2)
 
 ## Contributing
 
