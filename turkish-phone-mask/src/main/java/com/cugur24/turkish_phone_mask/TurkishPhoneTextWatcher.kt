@@ -75,6 +75,12 @@ class TurkishPhoneTextWatcher : TextWatcher {
 
     fun cleanPhone(phone: String): String = phone.filter { it.isDigit() }
 
+    /*
+    *  Using for force to mask generation.
+    *
+     */
+    fun forceToMask() = buildMask(editTextRef?.text.toString())
+
     private fun deletePart(inputText: String): String {
         val startingIndex = action.cursorPosition - action.count
         return when {
