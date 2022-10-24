@@ -79,7 +79,7 @@ class TurkishPhoneTextWatcher : TextWatcher {
     *  Using for force to mask generation.
     *
      */
-    fun forceToMask() = buildMask(editTextRef?.text.toString())
+    fun forceToMask() = editTextRef?.setText(generateMask(editTextRef?.text.toString()))
 
     private fun deletePart(inputText: String): String {
         val startingIndex = action.cursorPosition - action.count
