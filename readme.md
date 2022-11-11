@@ -29,7 +29,7 @@ Add this following line to app level gradle file and sync project.
 
 ```gradle
 dependencies {
-	implementation 'com.github.cugur24:TurkishPhoneTextInputMask:1.0-beta'
+	implementation 'com.github.cugur24:TurkishPhoneTextInputMask:v1.0.7-beta'
 }
 ```
 ## Usage

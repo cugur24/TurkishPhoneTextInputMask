@@ -175,6 +175,7 @@ class TurkishPhoneTextWatcher : TextWatcher {
     private fun setCursor() {
         when (action.actionType) {
             ActionTypes.DELETING -> {
+                if (checkIsCursorHaveToSetToDefaultState()) return
                 if (isThereAnyDigitFront(editTextRef)) {
                     val behindPart =
                         editTextRef?.text.toString().subSequence(0, action.cursorPosition)
@@ -235,6 +236,14 @@ class TurkishPhoneTextWatcher : TextWatcher {
 
             }
         }
+    }
+
+    private fun checkIsCursorHaveToSetToDefaultState(): Boolean {
+        if (action.actionType == ActionTypes.DELETING && action.cursorPosition < 3 && editTextRef?.text.toString() != "") {
+            editTextRef?.setSelection(2)
+            return true
+        }
+        return false
     }
 
     private fun isNextCharIsDigit(): Boolean {
